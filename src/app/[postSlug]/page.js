@@ -4,9 +4,8 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import BlogHero from "@/components/BlogHero";
 import { loadBlogPost } from "@/helpers/file-helpers";
 import { BLOG_TITLE } from "@/constants";
-import CodeSnippet from "@/components/CodeSnippet";
-import DivisionGroupsDemo from "@/components/DivisionGroupsDemo";
 import styles from "./postSlug.module.css";
+import COMPONENT_MAP from "@/helpers/mdx-components";
 
 export async function generateMetadata({ params }) {
   // read route params
@@ -29,13 +28,7 @@ async function BlogPost({ params }) {
     <article className={styles.wrapper}>
       <BlogHero title={title} publishedOn={publishedOn} />
       <div className={styles.page}>
-        <MDXRemote
-          source={content}
-          components={{
-            pre: CodeSnippet,
-            DivisionGroupsDemo,
-          }}
-        />
+        <MDXRemote source={content} components={COMPONENT_MAP} />
       </div>
     </article>
   );
