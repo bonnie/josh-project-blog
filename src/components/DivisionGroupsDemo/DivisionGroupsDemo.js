@@ -49,9 +49,9 @@ function DivisionGroupsDemo({
         />
       </header>
 
-      <div className={styles.demoWrapper}>
-        <div className={clsx(styles.demoArea)} style={gridStructure}>
-          <LayoutGroup>
+      <LayoutGroup>
+        <div className={styles.demoWrapper}>
+          <div className={clsx(styles.demoArea)} style={gridStructure}>
             {range(numOfGroups).map((groupIndex) => (
               <div key={groupIndex} className={styles.group}>
                 {range(numOfItemsPerGroup).map((index) => {
@@ -68,25 +68,25 @@ function DivisionGroupsDemo({
                 })}
               </div>
             ))}
-          </LayoutGroup>
+          </div>
         </div>
-      </div>
 
-      {includeRemainderArea && (
-        <div className={styles.remainderArea}>
-          <p className={styles.remainderHeading}>Remainder Area</p>
+        {includeRemainderArea && (
+          <div className={styles.remainderArea}>
+            <p className={styles.remainderHeading}>Remainder Area</p>
 
-          {range(remainder).map((index) => {
-            return <div key={index} className={styles.item} />;
-          })}
-        </div>
-      )}
+            {range(remainder).map((index) => {
+              return <div key={index} className={styles.item} />;
+            })}
+          </div>
+        )}
 
-      <Equation
-        dividend={numOfItems}
-        divisor={numOfGroups}
-        remainder={remainder}
-      />
+        <Equation
+          dividend={numOfItems}
+          divisor={numOfGroups}
+          remainder={remainder}
+        />
+      </LayoutGroup>
     </Card>
   );
 }
